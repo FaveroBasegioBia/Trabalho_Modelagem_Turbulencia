@@ -1,0 +1,31 @@
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : simpleFoam
+Date   : Jun 10 2026
+Time   : 17:39:10
+Host   : NotebookdoDan
+PID    : 39113
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT1/turbulent_planar
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+Create mesh for time = 0
+
+
+SIMPLE: no convergence criteria found. Calculations will run for 1000 steps.
+
+Reading field p
+

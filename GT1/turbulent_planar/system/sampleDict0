@@ -43,10 +43,8 @@ sets
 
     profile0						
     {						
-	// uniform is the supported line sampling type in OpenFOAM 2206.
-	type	uniform;					
+	type	lineCell;					
 	axis 	distance; //y;	
-    nPoints 1000;
 
 	start		(	7.996	0	0.05	);
 	end		(	7.996	0.1	0.05	);	
@@ -54,8 +52,7 @@ sets
 
     profile1						
     {							
-    // uniform is the supported line sampling type in OpenFOAM 2206.
-    type	uniform;
+	type	lineUniform;
 	nPoints 1000;
 	axis 	distance; //y;	
 

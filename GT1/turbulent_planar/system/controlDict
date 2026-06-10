@@ -18,13 +18,11 @@ libs
 
 );
 
-// Troca de nome da aplicacao
-application     simpleFoam;
+application     foamRun;
 
 solver          incompressibleFluid;
 
-// Start from the initial fields so a rerun does not reuse the last saved time.
-startFrom       startTime;
+startFrom       latestTime;
 
 startTime       0;
 
@@ -44,7 +42,7 @@ writeFormat     binary;	//ascii;
 
 writePrecision  12;
 
-writeCompression off;
+writeCompression uncompressed;
 
 timeFormat      general;
 
@@ -95,6 +93,8 @@ minmaxdomain_scalar
 	k 
 	omega 
 	nut 
+	epsilon 
+	nuTilda
     );
 }
 
@@ -135,8 +135,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    // minMag is not supported by volFieldValue in this OpenFOAM version.
-    operation       min;
+    operation       minMag;
 }
 
 maxdomain_scalar
@@ -148,8 +147,7 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    // maxMag is not supported by volFieldValue in this OpenFOAM version.
-    operation       max;
+    operation       maxMag;
 }
 
 ///////////////////////////////////////////////////////////////////////////
@@ -162,8 +160,7 @@ maxdomain_vector
         type yPlus;
         libs ("libutilityFunctionObjects.so");
 
-        // This OpenFOAM build aborts when yPlus tries to store a field.
-        enabled false;
+        enabled true;
         //log false;
 
         writeControl outputTime;
@@ -218,8 +215,7 @@ writeObjects1
     type        writeObjects;
     libs        ("libutilityFunctionObjects.so");
 
-    // This case does not cache all requested objects in OpenFOAM 2206.
-    enabled           off;
+    enabled           on;
 
     //writeControl     outputTime;
 

@@ -4,15 +4,14 @@ nprocs=4
 foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
 
 #decomposePar
-# Use simpleFoam and postProcess because foamRun and foamPostProcess are not available here.
-#mpirun -np $nprocs simpleFoam -parallel | tee log.solver
+#mpirun -np $nprocs foamRun -parallel | tee log.solver
 
-simpleFoam | tee log.solver
+foamRun | tee log.solver
 
-postProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
+foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
 
-#postProcess -solver incompressibleFluid -func yPlus
+#foamPostProcess -solver incompressibleFluid -func yPlus
 
-postProcess -func sampleDict -noZero
+foamPostProcess -func sampleDict -noZero
 
-postProcess -func probesDict -noZero
+foamPostProcess -func probesDict -noZero
