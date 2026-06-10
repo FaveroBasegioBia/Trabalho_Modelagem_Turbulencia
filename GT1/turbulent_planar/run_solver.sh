@@ -1,16 +1,33 @@
- #!/bin/bash
+#!/bin/bash
 
-nprocs=4
+nprocs=8
 foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
 
-#decomposePar
-#mpirun -np $nprocs foamRun -parallel | tee log.solver
+# Executa o solver principal com espaço correto
+simpleFoam | tee log.solver
 
-foamRun | tee log.solver
+# Calcula a tensao cisalhante na parede (Corrigido: sem o -solver)
+postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
 
-foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects -latestTime
+# Calcula o yPlus (Corrigido: sem o -solver)
+postProcess -func yPlus -latestTime
 
-foamPostProcess -solver incompressibleFluid -func yPlus
+# Executa a amostragem de dados do perfil de velocidade
+postProcess -func sampleDict0 -latestTime -noZero
 
-foamPostProcess -func sampleDict0 -latestTime -noZero
-#foamPostProcess -func probesDict0 -latestTime -noZero
+
+
+# nprocs=4
+# foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
+
+# # Executa o solver principal com espaço correto
+# simpleFoam | tee log.solver
+
+# # Calcula a tensao cisalhante na parede (Corrigido: sem o -solver)
+# postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
+
+# # Calcula o yPlus (Corrigido: sem o -solver)
+# postProcess -func yPlus -latestTime
+
+# # Executa a amostragem de dados do perfil de velocidade
+# postProcess -func sampleDict0 -latestTime -noZero
