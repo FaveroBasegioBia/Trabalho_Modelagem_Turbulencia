@@ -1,10 +1,11 @@
  #!/bin/bash
 
-foamRun | tee log.simpleFoam
+# Use simpleFoam and postProcess because foamRun and foamPostProcess are not available here.
+simpleFoam | tee log.simpleFoam
  
-foamPostProcess -func 'grad(U)' -latestTime
+postProcess -func 'grad(U)' -latestTime
 
-foamPostProcess -func sampleDict -latestTime -noZero
+postProcess -func sampleDict -latestTime -noZero
 
-foamPostProcess -func surfacesDict -latestTime -noZero
+postProcess -func surfacesDict -latestTime -noZero
 

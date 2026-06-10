@@ -18,7 +18,9 @@ libs
 
 );
 
-application     foamRun;
+
+// Use simpleFoam because foamRun is not available here.
+application     simpleFoam;
 
 solver          incompressibleFluid;
 

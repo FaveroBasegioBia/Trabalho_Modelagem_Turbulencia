@@ -6,11 +6,17 @@ foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
 #decomposePar
 #mpirun -np $nprocs foamRun -parallel | tee log.solver
 
-foamRun | tee log.solver
+# foamRun | tee log.solver
 
-foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects -latestTime
+# Modificado para rodar direito
+simpleFoam | tee log.solver
 
-foamPostProcess -solver incompressibleFluid -func yPlus
+# Apenas PostProcess
+# postProcess here does not accept -solver in this OpenFOAM version.
+postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
 
-foamPostProcess -func sampleDict0 -latestTime -noZero
+# postProcess here does not accept -solver in this OpenFOAM version.
+postProcess -func yPlus
+
+postProcess -func sampleDict0 -latestTime -noZero
 #foamPostProcess -func probesDict0 -latestTime -noZero

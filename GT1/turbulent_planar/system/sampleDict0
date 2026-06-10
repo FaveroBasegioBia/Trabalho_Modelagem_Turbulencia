@@ -43,8 +43,10 @@ sets
 
     profile0						
     {						
-	type	lineCell;					
+    // lineCell is not a valid sample type in OpenFOAM 2206, so use lineUniform.
+    type	lineUniform;					
 	axis 	distance; //y;	
+    nPoints 1000;
 
 	start		(	7.996	0	0.05	);
 	end		(	7.996	0.1	0.05	);	

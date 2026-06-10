@@ -18,7 +18,8 @@ libs
 
 );
 
-application     foamRun;
+// Troca de nome da aplicacao
+application     simpleFoam;
 
 solver          incompressibleFluid;
 

@@ -1,4 +1,5 @@
-set terminal qt 0
+set terminal pngcairo size 900,600
+set output 'gnuplot/radial_velocity_outlet.png'
 
 set title 'Radial velocity at outlet' 
 
@@ -11,11 +12,14 @@ set grid
 plot 'gnuplot/profile_laminar.xy' u 1:2 w lp pt 7 title 'OpenFOAM - Laminar solution', \
      'postProcessing/sampleDict0/1000/profile0.xy' u 1:2 w lp pt 7 title 'OpenFOAM - Turbulent solution'
 
+unset output
 
 
 
 
-set terminal qt 1
+
+set terminal pngcairo size 900,600
+set output 'gnuplot/laminar_profile.png'
 
 set title 'Laminar profile at outlet' 
 
@@ -29,11 +33,14 @@ set grid
 plot 'gnuplot/profile_laminar.xy' u 1:2 w p pt 7 title 'OpenFOAM - Laminar solution', \
 	1.9865597264*(1-x**2/(0.1)**2) title "Analytical solution"
 
+unset output
 
 
 
 
-set terminal qt 2
+
+set terminal pngcairo size 900,600
+set output 'gnuplot/turbulent_profile.png'
 
 set title 'Turbulent profile at outlet' 
 
@@ -55,6 +62,6 @@ plot  1.183*(1-x/0.1)**(1./6.) title "Tubulent correlation - Power law", \
 
 
 
-pause -1
+unset output
 
 #    EOF
