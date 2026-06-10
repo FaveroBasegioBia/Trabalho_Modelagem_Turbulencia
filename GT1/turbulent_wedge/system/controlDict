@@ -1,9 +1,9 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |				
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  10                                  	
-     \\/     M anipulation  |
+  =========                 |
+  \\     /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\   /   O peration     | Website:  https://www.openfoam.com
+    \\ /    A nd           | Version:  2206
+     \\/    M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
@@ -15,12 +15,11 @@ FoamFile
 
 libs
 (
-
+    "libfieldFunctionObjects.so"
+    "libutilityFunctionObjects.so"
 );
 
-application     foamRun;
-
-solver          incompressibleFluid;
+application     simpleFoam;
 
 startFrom       latestTime;
 
@@ -28,7 +27,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         1000;	//20000
+endTime         1000;
 
 deltaT          1;
 
@@ -38,7 +37,7 @@ writeInterval   100;
 
 purgeWrite      0;
 
-writeFormat     binary;	//ascii;
+writeFormat     binary;
 
 writePrecision  12;
 
@@ -50,68 +49,42 @@ timePrecision   6;
 
 runTimeModifiable true;
 
-// ************************************************************************* //
-
 functions
 {
-
-///////////////////////////////////////////////////////////////////////////
 
 minmaxdomain_scalar
 {
     type            volFieldValue;
-    libs            ("libfieldFunctionObjects.so");
-
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
-    
-    //writeControl    writeTime;
+    enabled         true;
+    log             true;
     writeControl    timeStep;
     writeInterval   1;
-
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
-
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
-    select      all;
-
+    writeFields     false;
+    writeLocation   true;
+    select          all;
     operation       none;
-
     fields
     (
         p
-	k 
-	omega 
-	nut 
-	epsilon 
-	nuTilda
+        k 
+        omega 
+        nut 
+        epsilon 
+        nuTilda
     );
 }
 
 minmaxdomain_vector
 {
     type            volFieldValue;
-    libs            ("libfieldFunctionObjects.so");
-
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
-    
-    //writeControl    writeTime;
+    enabled         true;
+    log             true;
     writeControl    timeStep;
     writeInterval   1;
-
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
-
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
+    writeFields     false;
+    writeLocation   true;
     select          all;
-
     operation       none;
-
     fields
     (
         U
@@ -127,7 +100,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    operation       minMag;
+    operation       none;
 }
 
 maxdomain_scalar
@@ -139,41 +112,23 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    operation       maxMag;
+    operation       none;
 }
 
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-
-    yplus
-    {
-    	type yPlus;
-    	functionObjectLibs ("libutilityFunctionObjects.so");
-    	enabled true;
-        writeControl outputTime;
-    }
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
+yplus
+{
+    type            yPlus;
+    enabled         true;
+    writeControl    outputTime;
+}
 
 wallShearStress1
 {
-    type                wallShearStress;
-    functionObjectLibs  ("libutilityFunctionObjects.so");
-
-    enabled true;
-
-    writeControl outputTime;
-    //writeControl timeStep;
-    //writeInterval 1;
-
-    //log true;
+    type            wallShearStress;
+    enabled         true;
+    writeControl    outputTime;
 }
-
-///////////////////////////////////////////////////////////////////////////
 
 }
 
-// ************************************************************************* //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //

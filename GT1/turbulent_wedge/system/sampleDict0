@@ -1,9 +1,9 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |				
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  10                                  	
-     \\/     M anipulation  |
+  =========                 |
+  \\     /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\   /   O peration     | Website:  https://openfoam.org
+    \\ /    A nd           | Version:  2206                                     
+     \\/    M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
@@ -14,7 +14,7 @@ FoamFile
 // * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 type sets;
-libs ("libsampling.so");
+libs (sampling);
 
 interpolationScheme cellPoint;
 
@@ -26,20 +26,32 @@ fields
     U
     p
     wallShearStress
-    //U.component(0) 
 );
 
 sets
 (
-    profile0						
-    {						
-	type	lineCell;					
-	axis 	distance; //y;	
+    profile0                        
+    {                               
+        type            polyLine;                   
+        axis            distance; 
 
-	start		(	7.996	0	0.1	);
-	end		(	7.996	0.1	0.1	);	
-    }							
+        points
+        (
+            ( 7.996   0   0.1 )
+            ( 7.996   0.1 0.1 )
+        );  
+    }                                
 
+    profile1                        
+    {                               
+        type            uniform;
+        nPoints         1000;
+        axis            distance; 
+
+        start           ( 7.996   0   0.1 );
+        end             ( 7.996   0.1 0.1 );  
+    }                                                   
+    
 );
 
-// *********************************************************************** //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
