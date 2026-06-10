@@ -43,8 +43,8 @@ sets
 
     profile0						
     {						
-    // lineCell is not a valid sample type in OpenFOAM 2206, so use lineUniform.
-    type	lineUniform;					
+	// uniform is the supported line sampling type in OpenFOAM 2206.
+	type	uniform;					
 	axis 	distance; //y;	
     nPoints 1000;
 
@@ -54,7 +54,8 @@ sets
 
     profile1						
     {							
-	type	lineUniform;
+    // uniform is the supported line sampling type in OpenFOAM 2206.
+    type	uniform;
 	nPoints 1000;
 	axis 	distance; //y;	
 

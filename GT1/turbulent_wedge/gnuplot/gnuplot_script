@@ -1,4 +1,4 @@
-set terminal qt 0
+set terminal qt
 
 set title 'Radial velocity at outlet' 
 
@@ -15,7 +15,7 @@ plot 'gnuplot/profile_laminar.xy' u 1:2 w lp pt 7 title 'OpenFOAM - Laminar solu
 
 
 
-set terminal qt 1
+set terminal qt
 
 set title 'Laminar profile at outlet' 
 
@@ -33,7 +33,7 @@ plot 'gnuplot/profile_laminar.xy' u 1:2 w p pt 7 title 'OpenFOAM - Laminar solut
 
 
 
-set terminal qt 2
+set terminal qt
 
 set title 'Turbulent profile at outlet' 
 

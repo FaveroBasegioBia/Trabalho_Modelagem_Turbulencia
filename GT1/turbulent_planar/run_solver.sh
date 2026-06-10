@@ -3,6 +3,9 @@
 nprocs=4
 foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
 
+# Clean previous run data so the solver starts from a fresh case.
+foamCleanTutorials
+
 #decomposePar
 #mpirun -np $nprocs foamRun -parallel | tee log.solver
 
@@ -15,8 +18,7 @@ simpleFoam | tee log.solver
 # postProcess here does not accept -solver in this OpenFOAM version.
 postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
 
-# postProcess here does not accept -solver in this OpenFOAM version.
-postProcess -func yPlus
+# yPlus is handled by controlDict yplus_stats in this case.
 
 postProcess -func sampleDict0 -latestTime -noZero
 #foamPostProcess -func probesDict0 -latestTime -noZero
