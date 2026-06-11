@@ -1,9 +1,9 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |				
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  10                                  	
-     \\/     M anipulation  |
+  =========                 |
+  \\     /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\   /   O peration     | Website:  https://www.openfoam.com
+    \\ /    A nd           | Version:  2206
+     \\/    M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
@@ -18,9 +18,7 @@ libs
 
 );
 
-application     foamRun;
-
-solver          incompressibleFluid;
+application     simpleFoam;
 
 startFrom       latestTime;
 
@@ -28,7 +26,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2000;	//20000
+endTime         2000;
 
 deltaT          1;
 
@@ -60,22 +58,18 @@ functions
 minmaxdomain_scalar
 {
     type            volFieldValue;
-    libs            ("libfieldFunctionObjects.so");
+    libs            (fieldFunctionObjects);
 
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
+    enabled         true;
+    log             true;
     
-    //writeControl    writeTime;
     writeControl    timeStep;
     writeInterval   1;
 
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
+    writeFields     false;
+    writeLocation   true;
 
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
-    select      all;
+    select          all;
 
     operation       none;
 
@@ -91,22 +85,18 @@ minmaxdomain_scalar
 minmaxdomain_vector
 {
     type            volFieldValue;
-    libs            ("libfieldFunctionObjects.so");
+    libs            (fieldFunctionObjects);
 
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
+    enabled         true;
+    log             true;
     
-    //writeControl    writeTime;
     writeControl    timeStep;
     writeInterval   1;
 
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
+    writeFields     false;
+    writeLocation   true;
 
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
-    select      all;
+    select          all;
 
     operation       none;
 
@@ -125,7 +115,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    operation       minMag;
+    operation       min;
 }
 
 maxdomain_scalar
@@ -137,45 +127,8 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    operation       maxMag;
+    operation       max;
 }
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-//Saves yplus field at the given interval
-
-    yplus_field
-    {
-        type yPlus;
-        libs ("libutilityFunctionObjects.so");
-
-        enabled true;
-        //log false;
-
-        writeControl outputTime;
-    }
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-//Print y+ stats every iteration without saving the field
-
-    yplus_stats
-    {
-        type yPlus;
-        libs ("libutilityFunctionObjects.so");
-
-        enabled true;
-
-        writeControl timeStep;
-        writeInterval 1;
-
-//Leave object empty to not save the field
-//This will only print the yplus values every timestep and will not save the field
-        objects ();
-        log true;
-    }
 
 ///////////////////////////////////////////////////////////////////////////
 

@@ -1,0 +1,8 @@
+=== DADOS EXTRAIDOS DO GT2 PARA ANALISE ===
+
+[KEpsilon_highRE_V1]
+Tau_w: 0.032265971
+Max y+: 4.7954782
+Avg y+: 2.1441704
+ClockTime: 46s
+------------------------------

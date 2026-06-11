@@ -1,5 +1,6 @@
 #!/bin/bash
-source /Volumes/OpenFOAM/OpenFOAM-12/etc/bashrc
+
+. /usr/lib/openfoam/openfoam2206/etc/bashrc
 
 
 foamCleanTutorials
