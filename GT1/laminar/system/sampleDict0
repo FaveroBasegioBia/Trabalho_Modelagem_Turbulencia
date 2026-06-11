@@ -1,9 +1,9 @@
 /*--------------------------------*- C++ -*----------------------------------*\
-  =========                 |				
-  \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
-   \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  10                                  	
-     \\/     M anipulation  |
+  =========                 |
+  \\     /  F ield         | OpenFOAM: The Open Source CFD Toolbox
+   \\   /   O peration     | Website:  https://www.openfoam.com
+    \\ /    A nd           | Version:  2206
+     \\/    M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
 {
@@ -11,7 +11,7 @@ FoamFile
     class       dictionary;
     object      sampleDict;
 }
-// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
 
 type sets;
 libs ("libsampling.so");
@@ -20,28 +20,23 @@ interpolationScheme cellPoint;
 
 setFormat       raw;
 
-// Fields to sample.
+// Campos a serem extraidos
 fields
 (
     U
     p
     wallShearStress
-    //U.component(0) 
 );
 
 sets
 (
-    profile0						
-    {	
-	//type	lineFace;						
-	type	lineCell;	
-	//type	face;	//lineCell;			
-	axis 	distance; //y;	
-	
-	start		(	7.996	0	0.1	);
-	end		(	7.996	0.1	0.1	);	
-    }							
-
+    profile0
+    {
+        type    lineCell;
+        axis    distance;
+        start   ( 7.996 0 0.1 );
+        end     ( 7.996 0.1 0.1 );
+    }
 );
 
-// *********************************************************************** //
+// ************************************************************************* //

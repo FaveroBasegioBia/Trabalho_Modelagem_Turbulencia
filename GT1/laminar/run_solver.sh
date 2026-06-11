@@ -1,15 +1,25 @@
  #!/bin/bash
 
-nprocs=4
-foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
 
-#decomposePar
-#mpirun -np $nprocs foamRun -parallel | tee log.solver
+# Executa o solver v2206
+simpleFoam | tee log.solver
 
-foamRun | tee log.solver
+# Extrai os tensoes na parede no ultimo tempo
+postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
 
-#simpleFoam -postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
-foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects -latestTime
+# Roda o extrator de linha (sampleDict)
+postProcess -func sampleDict -latestTime -noZero
 
-foamPostProcess -func sampleDict0 -latestTime -noZero
+# nprocs=4
+# foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
+
+# #decomposePar
+# #mpirun -np $nprocs foamRun -parallel | tee log.solver
+
+# foamRun | tee log.solver
+
+# #simpleFoam -postProcess -func wallShearStress -noZero -noFunctionObjects -latestTime
+# foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects -latestTime
+
+# foamPostProcess -func sampleDict0 -latestTime -noZero
 

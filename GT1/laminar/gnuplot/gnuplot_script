@@ -1,19 +1,16 @@
-set terminal qt 0
+set terminal pngcairo size 800,600 enhanced font 'Arial,12'
+set output 'GT1_Laminar_Validation_Gnuplot.png'
 
 set title 'Laminar profile at outlet' 
-
-set xlabel 'Radius'
-set ylabel 'Radial velocity' 
-
-#set xtics 0,0.1,1.
+set xlabel 'Radius (m)'
+set ylabel 'Radial velocity (m/s)' 
 set grid
 
+# FORÇA O GRÁFICO A FICAR NA ESCALA REAL DO SEU CASO
+set xrange [0:0.1]
+set yrange [0:2.2]
 
+# Verifique se a sua pasta dentro de postProcessing chama sampleDict ou sampleDict0 e ajuste abaixo:
 plot \
-	'postProcessing/sampleDict0/1000/profile0.xy' u ($1):($2) w lp pt 7 title 'OpenFOAM - Laminar', \
-	1.9865597264*(1-x**2/0.1**2) lc rgb 'red' title 'Analytical solution'
-
-
-pause -1
-
-#    EOF
+	'postProcessing/sampleDict0/1000/profile0_p_U_wallShearStress.xy' u 1:3 w lp pt 7 lc rgb 'purple' title 'OpenFOAM - Laminar', \
+	1.9865597264*(1 - (x**2)/(0.1**2)) lc rgb '#20B2AA' lw 2 title 'Analytical solution'

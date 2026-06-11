@@ -1,0 +1,44 @@
+=== DADOS EXTRAIDOS DO GT1 PARA ANALISE ===
+
+[laminar - Padrao]
+Tau_w: 0.001
+Max y+: N/A
+Avg y+: N/A
+ClockTime: 8s
+------------------------------
+[turbulent_planar - Padrao]
+Tau_w: 0.0028838741492
+Max y+: 2.46101110047
+Avg y+: 1.1703826162
+ClockTime: 6s
+------------------------------
+[turbulent_wedge - kEps_5pct]
+Tau_w: 0.00529527273455
+Max y+: 4.46499256239
+Avg y+: 3.15089674178
+ClockTime: 18s
+------------------------------
+[turbulent_wedge - kEps_10pct]
+Tau_w: 0.00529527273455
+Max y+: 4.46499256239
+Avg y+: 3.15089674178
+ClockTime: 17s
+------------------------------
+[turbulent_wedge - SST_5pct]
+Tau_w: 0.00275462872367
+Max y+: 4.11073769701
+Avg y+: 2.266332328
+ClockTime: 21s
+------------------------------
+[turbulent_wedge - SST_10pct]
+Tau_w: 0.00275462872367
+Max y+: 4.11073769701
+Avg y+: 2.266332328
+ClockTime: 20s
+------------------------------
+[turbulent_wedge - SA_5pct]
+Tau_w: 0.0028337858386
+Max y+: 4.06697396587
+Avg y+: 2.33719222859
+ClockTime: 18s
+------------------------------
