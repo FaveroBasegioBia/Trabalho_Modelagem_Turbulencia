@@ -1,0 +1,18 @@
+=== DADOS EXTRAIDOS DO GT1 PARA ANALISE ===
+
+[turbulent_planar - Padrao]
+Tensão na Parede (Tau_w): 0.0028838741492
+Maior y+ na malha: 2.46101110047
+------------------------------
+[turbulent_wedge - kEpsilon]
+Tensão na Parede (Tau_w): 0.00529527273455
+Maior y+ na malha: 4.46499256239
+------------------------------
+[turbulent_wedge - kOmegaSST]
+Tensão na Parede (Tau_w): 0.00275462872367
+Maior y+ na malha: 4.11073769701
+------------------------------
+[turbulent_wedge - SpalartAllmaras]
+Tensão na Parede (Tau_w): 0.0028337858386
+Maior y+ na malha: 4.06697396587
+------------------------------

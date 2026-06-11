@@ -10,8 +10,8 @@ set ylabel 'Radial velocity'
 set grid
 
 # AQUI: O caso turbulento usa a coluna 3 (u 1:3)
-plot 'gnuplot/profile_laminar.xy' u 1:2 w lp pt 7 title 'OpenFOAM - Laminar solution', \
-     'postProcessing/sampleDict0/1000/profile0_p_U_wallShearStress.xy' u 1:3 w lp pt 7 title 'OpenFOAM - Turbulent solution'
+plot 'gnuplot/profile_laminar.xy' u 1:2 w lp pt 7 lw 2  title 'OpenFOAM - Laminar solution', \
+     'postProcessing/sampleDict0/1000/profile1_p_U_wallShearStress.xy' u 1:3 w l lw 2 title 'OpenFOAM - Turbulent solution'
 
 # ==============================================================================
 # GRAFICO 2: VALIDACAO DO PERFIL LAMINAR
@@ -42,6 +42,6 @@ set grid
 
 # AQUI: Limite [0:0.0999] para não dar erro na fórmula e uso da coluna 3 (u 1:3)
 plot [0:0.0999] 1.183*(1-x/0.1)**(1./6.) title "Turbulent correlation - Power law", \
-     'postProcessing/sampleDict0/1000/profile0_p_U_wallShearStress.xy' u 1:3 w lp pt 7 title "OpenFOAM - Turbulent solution"
+     'postProcessing/sampleDict0/1000/profile1_p_U_wallShearStress.xy' u 1:3 w l lw 2 title "OpenFOAM - Turbulent solution"
 
 # EOF

@@ -21,7 +21,7 @@ RAS
 {
     // Define o modelo k-Epsilon como padrao. 
     // OBS: Se no seu caso Planar voce usou kOmegaSST, troque a palavra kEpsilon por kOmegaSST abaixo para manter a mesma fisica!
-    RASModel        kEpsilon;
+    RASModel        SpalartAllmaras;
     
     turbulence      on;
     printCoeffs     on;

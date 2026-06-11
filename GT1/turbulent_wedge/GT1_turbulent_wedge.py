@@ -12,7 +12,7 @@ R = 0.1    # Raio do duto (m) de acordo com o blockMeshDict
 # ==============================================================================
 # CONFIGURACAO DE PASTAS E ARQUIVOS DE ENTRADA (ESTILO PLANAR)
 # ==============================================================================
-# Caminho exato do profile1 (1000 pontos) gerado no caso wedge
+# Caminho exato do profile1
 arquivo_dados = "postProcessing/sampleDict0/1000/profile1_p_U_wallShearStress.xy"
 
 # Definicao da pasta de destino solicitada
@@ -22,9 +22,9 @@ pasta_saida = "posprocesspython"
 if not os.path.exists(pasta_saida):
     os.makedirs(pasta_saida)
 
-# INSIRA AQUI o valor de wallShearStress (Tau_w) obtido no seu turbulent_wedge
 # Verifique o valor maximo de wallShearStress gerado para o caso wedge
-tau_w = 0.005295
+with open("valor_tau_w.txt", "r") as f:
+    tau_w = float(f.read().strip())
 
 # ==============================================================================
 # PROCESSAMENTO DOS DADOS PARA PERFIL ADIMENSIONAL (LOG-LAW)
