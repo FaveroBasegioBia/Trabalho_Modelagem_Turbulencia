@@ -90,6 +90,13 @@ for pasta_mae, subpastas in configuracoes.items():
                     dados = np.loadtxt(arq)
                     
                     if dados.ndim == 2 and dados.shape[0] > 0:
+                        
+                        # =======================================================
+                        # CORREÇÃO DO BUG DO MATPLOTLIB
+                        # 1. Ordena os dados baseados na coordenada Y (coluna 0)
+                        dados = dados[dados[:, 0].argsort()]
+                        # 2. Corta os "zeros" do infinito (limita até o topo da malha y=1.0)
+                        dados = dados[dados[:, 0] <= 1.0]
                         plt.figure(figsize=(7, 5))
                         
                         # Tratamento inteligente para achar Ux independente de como o OpenFOAM salvou

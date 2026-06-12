@@ -2,7 +2,7 @@
   =========                 |				
   \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox
    \\    /   O peration     | Website:  https://openfoam.org
-    \\  /    A nd           | Version:  10                                  	
+    \\  /    A nd           | Version:  10                                 	
      \\/     M anipulation  |
 \*---------------------------------------------------------------------------*/
 FoamFile
@@ -18,7 +18,7 @@ libs
 
 );
 
-application     foamRun;
+application     simpleFoam;
 
 solver          incompressibleFluid;
 
@@ -28,7 +28,7 @@ startTime       0;
 
 stopAt          endTime;
 
-endTime         2000;	//20000
+endTime         2000;
 
 deltaT          1;
 
@@ -56,56 +56,29 @@ functions
 {
 
 ///////////////////////////////////////////////////////////////////////////
-//For OF8
-/*
-    minmaxdomain
-    {
-	type fieldMinMax;
-
-	functionObjectLibs ("libfieldFunctionObjects.so");
-
-	enabled true; //true or false
-
-	mode component;
-
-	writeControl timeStep;
-	writeInterval 1;
-
-	log true;
-
-	fields (p U k omega epsilon nut);
-    }
-*/
+// For OF9 - Monitoramento de Min/Max de escalares e vetores
 ///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-//For OF9
 
 minmaxdomain_scalar
 {
     type            volFieldValue;
     libs            ("libfieldFunctionObjects.so");
 
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
+    enabled         true; 	
+    log             true;	
     
-    //writeControl    writeTime;
     writeControl    timeStep;
     writeInterval   1;
 
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
+    writeFields     false;	
+    writeLocation   true;	
 
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
-    select      all;
-
+    select          all;
     operation       none;
 
     fields
     (
-	nuTilda
+        nuTilda
         nut
     );
 }
@@ -115,21 +88,16 @@ minmaxdomain_vector
     type            volFieldValue;
     libs            ("libfieldFunctionObjects.so");
 
-    enabled 	    true; 	//true or false
-    log             true;	//write to screen
+    enabled         true; 	
+    log             true;	
     
-    //writeControl    writeTime;
     writeControl    timeStep;
     writeInterval   1;
 
-    writeFields     false;	//write solution to field value - Not needed when only reporting value to screen
+    writeFields     false;	
+    writeLocation   true;	
 
-    writeLocation   true;	//write location in the output file
-
-    //mode component;
-
-    select      all;
-
+    select          all;
     operation       none;
 
     fields
@@ -147,7 +115,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    operation       minMag;
+    operation       min;
 }
 
 maxdomain_scalar
@@ -159,29 +127,21 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    operation       maxMag;
+    operation       max;
 }
 
 ///////////////////////////////////////////////////////////////////////////
-
+// AJUSTE: BLOCOS DE YPLUS DESATIVADOS PARA EVITAR CRASH NO TEMPO 0
 ///////////////////////////////////////////////////////////////////////////
-//Saves yplus field at the given interval
-
+/*
     yplus_field
     {
         type yPlus;
         libs ("libutilityFunctionObjects.so");
 
         enabled true;
-        //log false;
-
         writeControl outputTime;
     }
-
-///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
-//Print y+ stats every iteration without saving the field
 
     yplus_stats
     {
@@ -192,13 +152,10 @@ maxdomain_vector
 
         writeControl timeStep;
         writeInterval 1;
-
-//Leave object empty to not save the field
-//This will only print the yplus values every timestep and will not save the field
         objects ();
         log true;
     }
-
+*/
 ///////////////////////////////////////////////////////////////////////////
 
 }
