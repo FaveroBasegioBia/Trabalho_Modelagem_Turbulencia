@@ -68,10 +68,10 @@ sets
 
     profile0						
     {							
-	type	lineCell;
+	type	uniform;
 
 	//type	lineUniform;
-	//nPoints 1000;	
+	nPoints 1000;	
 			
 	axis 	distance; //y;	
 	
@@ -81,7 +81,7 @@ sets
 
     profile1						
     {							
-	type	lineUniform;
+	type	uniform;
 	nPoints 1000;
 	axis 	distance; //y;	
 
@@ -92,7 +92,8 @@ sets
 
     profile3
     {							
-	type	lineCell;
+	type	uniform;
+    nPoints 1000;
 	axis 	distance; //y;	
 
 	start	(	-0.1	0.0004	0.5	);

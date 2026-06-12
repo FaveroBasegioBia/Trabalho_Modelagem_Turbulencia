@@ -17,9 +17,9 @@ simulationType RAS;
 
 RAS
 {
-    RASModel        kEpsilon;			//highRE
+    //RASModel        kEpsilon;			//highRE
     //RASModel	    realizableKE;		//low-highRE???
-    //RASModel	    LaunderSharmaKE;		//lowRE
+    RASModel	    LaunderSharmaKE;		//lowRE
     //RASModel            kOmegaSST;		//low-highRE
     //RASModel           SpalartAllmaras;	//lowRE
 

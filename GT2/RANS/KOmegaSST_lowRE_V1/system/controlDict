@@ -125,7 +125,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    operation       minMag;
+    operation       min;
 }
 
 maxdomain_scalar
@@ -137,46 +137,44 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    operation       maxMag;
+    operation       max;
 }
 
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
-//Saves yplus field at the given interval
 
-    yplus_field
-    {
-        type yPlus;
-        libs ("libutilityFunctionObjects.so");
-
-        enabled true;
-        //log false;
-
-        writeControl outputTime;
-    }
+//    yplus_field
+//    {
+//        type yPlus;
+//        libs ("libutilityFunctionObjects.so");
+//
+//        enabled true;
+//        //log false;
+//
+//        writeControl outputTime;
+//    }
 
 ///////////////////////////////////////////////////////////////////////////
 
 ///////////////////////////////////////////////////////////////////////////
 //Print y+ stats every iteration without saving the field
 
-    yplus_stats
-    {
-        type yPlus;
-        libs ("libutilityFunctionObjects.so");
-
-        enabled true;
-
-        writeControl timeStep;
-        writeInterval 1;
-
-//Leave object empty to not save the field
-//This will only print the yplus values every timestep and will not save the field
-        objects ();
-        log true;
-    }
-
+//    yplus_stats
+//    {
+//        type yPlus;
+//        libs ("libutilityFunctionObjects.so");
+//
+//        enabled true;
+//
+//        writeControl timeStep;
+//        writeInterval 1;
+//
+//        //Leave object empty to not save the field
+//        //This will only print the yplus values every timestep and will not save the field
+//        objects ();
+//        log true;
+//    }
 
 }
 

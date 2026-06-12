@@ -1,34 +1,20 @@
- #!/bin/bash
+#!/bin/bash
+
+. /usr/lib/openfoam/openfoam2206/etc/bashrc
 
 nprocs=8
-foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
+foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs > /dev/null 2>&1
 
-#decomposePar
-#mpirun -np $nprocs foamRun -parallel | tee log.solver
+echo "-> Iniciando o solver simpleFoam (Erros serao mostrados com localizacao)..."
 
-simpleFoam | tee log.solver
+# O -A 20 garante que, se houver erro, as próximas 20 linhas explicativas apareçam na tela
+simpleFoam 2>&1 | tee log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
 
-postProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
+# Pos-processamento direcionado para o log de forma silenciosa
+simpleFoam -postProcess -func wallShearStress -latestTime >> log.solver 2>&1 | grep -E "ERROR|FATAL|Warning|Exception"
+simpleFoam -postProcess -func yPlus -latestTime >> log.solver 2>&1 | grep -E "ERROR|FATAL|Warning|Exception"
+simpleFoam -postProcess -func sampleDict -latestTime >> log.solver 2>&1 | grep -E "ERROR|FATAL|Warning|Exception"
+simpleFoam -postProcess -func probesDict -latestTime >> log.solver 2>&1 | grep -E "ERROR|FATAL|Warning|Exception"
 
-#postProcess -solver incompressibleFluid -func yPlus
-
-postProcess -func sampleDict -noZero
-
-postProcess -func probesDict -noZero
-
-
-# nprocs=8
-# foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
-
-# #decomposePar
-# #mpirun -np $nprocs foamRun -parallel | tee log.solver
-
-# foamRun | tee log.solver
-
-# foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
-
-# #foamPostProcess -solver incompressibleFluid -func yPlus
-
-# foamPostProcess -func sampleDict -noZero
-
-# foamPostProcess -func probesDict -noZero
+# Executa o script python silenciosamente
+python3 GT2_pos_process.py > /dev/null 2>&1

@@ -1,19 +1,23 @@
 #!/bin/bash
-source /Volumes/OpenFOAM/OpenFOAM-12/etc/bashrc
 
+. /usr/lib/openfoam/openfoam2206/etc/bashrc
 
-nprocs=4
-foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
+nprocs=8
+foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs > /dev/null 2>&1
 
-#decomposePar
-#mpirun -np $nprocs foamRun -parallel | tee log.solver
+echo "-> Aqui comeca o solver para o modelo k-omega SST !"
 
-foamRun | tee log.solver
+# Executa o solver principal filtrando erros com contexto
+simpleFoam 2>&1 | tee log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
 
-foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
+echo "-> Executando pos-processamento..."
 
-#foamPostProcess -solver incompressibleFluid -func yPlus
+simpleFoam -postProcess -func wallShearStress -latestTime 2>&1 | tee -a log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception"
 
-foamPostProcess -func sampleDict -noZero
+simpleFoam -postProcess -func yPlus -latestTime 2>&1 | tee -a log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception"
 
-foamPostProcess -func probesDict -noZero
+simpleFoam -postProcess -func sampleDict -latestTime 2>&1 | tee -a log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception"
+# =========================================================================
+
+# Executa o processamento python
+python3 GT2_pos_process.py > /dev/null 2>&1
