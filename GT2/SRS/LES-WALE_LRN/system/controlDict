@@ -18,7 +18,7 @@ libs
 
 );
 
-application     foamRun;
+application     pimpleFoam;
 
 solver          incompressibleFluid;
 
@@ -31,7 +31,7 @@ stopAt          endTime;
 
 endTime         10;	//10 - 20(D)
 
-deltaT          0.0001;
+deltaT          1e-4;
 
 writeControl    runTime;
 writeControl    adjustableRunTime;
@@ -134,7 +134,7 @@ mindomain_scalar
 mindomain_vector
 {
     $minmaxdomain_vector
-    operation       minMag;
+    operation       min;
 }
 
 maxdomain_scalar
@@ -146,12 +146,11 @@ maxdomain_scalar
 maxdomain_vector
 {
     $minmaxdomain_vector
-    operation       maxMag;
+    operation       max;
 }
 
 ///////////////////////////////////////////////////////////////////////////
-
-///////////////////////////////////////////////////////////////////////////
+/*///////////////////////////////////////////////////////////////////////////
 //Saves yplus field at the given interval
 
     yplus_field
@@ -188,7 +187,7 @@ maxdomain_vector
 
 ///////////////////////////////////////////////////////////////////////////
 
-///////////////////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////////////////*/
 
 wallShearStress1
 {

@@ -76,7 +76,7 @@ solvers
 	minIter		1;
     }
 
-    "(k|kFinal|Oomega|omegaFinal)"
+    "(k|kFinal|Oomega|omegaFinal|omega.*)"
     {
 
         solver          PBiCGStab;
@@ -85,6 +85,8 @@ solvers
         relTol          0;
 	minIter		3;
     }
+
+    
 
 }
 

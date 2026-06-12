@@ -1,0 +1,82 @@
+/*--------------------------------*- C++ -*----------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+FoamFile
+{
+    version     2.0;
+    format      ascii;
+    arch        "LSB;label=32;scalar=64";
+    class       dictionary;
+    location    "1/uniform/functionObjects";
+    object      functionObjectProperties;
+}
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+
+cdf7e925f5746741c316f5fbcf39ad0dfca90775
+{
+    mindomain_scalar
+    {
+        scalar
+        {
+            min(p)          -0.03915468204408859;
+            min(k)          2.07933510249462e-11;
+            min(omega)      13.74888710011885;
+            min(nut)        1.430455393475066e-17;
+        }
+    }
+    mindomain_vector
+    {
+        vector
+        {
+            min(U)          ( 0.00077366802 -1.5512318e-08 -6.2607702e-32 );
+        }
+    }
+    maxdomain_scalar
+    {
+        scalar
+        {
+            max(p)          0.08918303720636511;
+            max(k)          0.0001334593667717118;
+            max(omega)      1194434457.315812;
+            max(nut)        1.984074546035885e-07;
+        }
+    }
+    maxdomain_vector
+    {
+        vector
+        {
+            max(U)          ( 1.0090744 0.054725952 5.5618776e-32 );
+        }
+    }
+}
+
+fieldAverage
+{
+    U
+    {
+        totalIter       1;
+        totalTime       0.009247787414393027;
+    }
+    p
+    {
+        totalIter       1;
+        totalTime       0.009247787414393027;
+    }
+    wallShearStress
+    {
+        totalIter       1;
+        totalTime       0.009247787414393027;
+    }
+    nut
+    {
+        totalIter       1;
+        totalTime       0.009247787414393027;
+    }
+}
+
+
+// ************************************************************************* //

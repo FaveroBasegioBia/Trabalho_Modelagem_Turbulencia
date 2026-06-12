@@ -4,29 +4,41 @@
 Tau_w: 0.032265971
 Max y+: 4.7954782
 Avg y+: 2.1441704
-ClockTime: 48s
+ClockTime: 37s
 ------------------------------
 [KEpsilon_lowRE_V1]
 Tau_w: 0.046982532
 Max y+: 0.014489559
 Avg y+: 0.0035388797
-ClockTime: 126s
+ClockTime: 81s
 ------------------------------
 [KOmegaSST_highRE]
 Tau_w: 0.031590407
 Max y+: 4.7458138
 Avg y+: 1.633666
-ClockTime: 80s
+ClockTime: 46s
 ------------------------------
 [KOmegaSST_lowRE_V1]
 Tau_w: 0.046051856
 Max y+: 0.01434537
 Avg y+: 0.0039138825
-ClockTime: 107s
+ClockTime: 61s
 ------------------------------
 [SA_LRN]
-Tau_w: 14.965176
-Max y+: 0.25849941
-Avg y+: 0.25849941
-ClockTime: N/As
+Tau_w: 0.047234664
+Max y+: 0.014528402
+Avg y+: 0.0039947412
+ClockTime: 12s
+------------------------------
+[DES_KO_LRN]
+Tau_w: 0.047325681
+Max y+: N/A
+Avg y+: N/A
+ClockTime: 50s
+------------------------------
+[LES-WALE_LRN]
+Tau_w: 0.039563531
+Max y+: N/A
+Avg y+: N/A
+ClockTime: 267s
 ------------------------------

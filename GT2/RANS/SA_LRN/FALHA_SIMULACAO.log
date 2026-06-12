@@ -1,0 +1,323 @@
+Cleaning case /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+Cleaning case /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : plot3dToFoam -noBlank -2D 1 ../nasa_grid/grid1
+Date   : Jun 12 2026
+Time   : 12:56:26
+Host   : NotebookdoDan
+PID    : 119947
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Reading 2D case by extruding points by 1 in z direction.
+
+Create time
+
+--> FOAM Warning : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Reading 1 blocks
+block 0 nx:137 ny:97 nz:2
+Reading block points
+block 0:
+Reading 13289 x coordinates...
+Reading 13289 y coordinates...
+Extruding 13289 points in z direction...
+Looking at cell 0 0 0 to determine orientation.
+Right-handed block.
+
+Merged points within 1e-15 distance. Merged from 26578 down to 26578 points.
+Creating cells
+Creating boundary patches
+--> FOAM Warning : 
+    From Foam::polyMesh::polyMesh(const Foam::IOobject&, Foam::pointField&&, const Foam::cellShapeList&, const Foam::faceListList&, const Foam::wordList&, const Foam::wordList&, const Foam::word&, const Foam::word&, const Foam::wordList&, bool)
+    in file meshes/polyMesh/polyMeshFromShapeMesh.C at line 646
+    Found 26576 undefined faces in mesh; adding to default patch defaultFaces
+Writing polyMesh
+End
+
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : autoPatch 30 -overwrite
+Date   : Jun 12 2026
+Time   : 12:56:26
+Host   : NotebookdoDan
+PID    : 119948
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Create polyMesh for time = 0
+
+Mesh read in = 0.03 s
+
+
+Feature:30
+minCos :0.8660254
+
+Assigned 136 faces to patch auto0
+
+Assigned 13056 faces to patch auto1
+
+Assigned 13056 faces to patch auto2
+
+Assigned 96 faces to patch auto3
+
+Assigned 96 faces to patch auto4
+
+Assigned 136 faces to patch auto5
+
+End
+
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : topoSet
+Date   : Jun 12 2026
+Time   : 12:56:27
+Host   : NotebookdoDan
+PID    : 119949
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Create polyMesh for time = 0
+
+Reading topoSetDict
+
+Time = 0
+    mesh not changed.
+Created faceSet slipwall
+    Applying source boxToFace
+    Adding faces with centre within boxes 1((-5 -10 -1) (0 0 1))
+    faceSet slipwall now size 24
+
+End
+
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : createPatch -overwrite
+Date   : Jun 12 2026
+Time   : 12:56:27
+Host   : NotebookdoDan
+PID    : 119950
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Create mesh for time = 0
+
+Reading "system/createPatchDict"
+
+
+
+Adding patches to mesh region0
+
+Adding new patch slipsurface from 
+{
+    type            patch;
+    nFaces          0;
+    startFace       0;
+}
+
+
+
+
+Repatching mesh region0
+
+Read 24 faces from faceSet slipwall
+Doing topology modification to order faces.
+
+Not synchronising points.
+
+Removing patches with no faces in them.
+
+Removed zero-sized patch defaultFaces type wall at position 0
+
+
+Writing repatched mesh region0 to 0
+
+End
+
+/*---------------------------------------------------------------------------*\
+| =========                 |                                                 |
+| \\      /  F ield         | OpenFOAM: The Open Source CFD Toolbox           |
+|  \\    /   O peration     | Version:  2206                                  |
+|   \\  /    A nd           | Website:  www.openfoam.com                      |
+|    \\/     M anipulation  |                                                 |
+\*---------------------------------------------------------------------------*/
+Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
+Arch   : "LSB;label=32;scalar=64"
+Exec   : checkMesh
+Date   : Jun 12 2026
+Time   : 12:56:27
+Host   : NotebookdoDan
+PID    : 119952
+I/O    : uncollated
+Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/SA_LRN
+nProcs : 1
+trapFpe: Floating point exception trapping enabled (FOAM_SIGFPE).
+fileModificationChecking : Monitoring run-time modified files using timeStampMaster (fileModificationSkew 5, maxFileModificationPolls 20)
+allowSystemOperations : Allowing user-supplied system call operations
+
+// * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * * //
+Create time
+
+--> FOAM Warning : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Create mesh for time = 0
+
+Time = 0
+
+Mesh stats 
+    points:           26578
+    internal points:  0
+    faces:            52456
+    internal faces:   25880
+    cells:            13056
+    faces per cell:   6
+    boundary patches: 7
+    point zones:      0
+    face zones:       0
+    cell zones:       0
+
+Overall number of cells of each type:
+    hexahedra:     13056
+    prisms:        0
+    wedges:        0
+    pyramids:      0
+    tet wedges:    0
+    tetrahedra:    0
+    polyhedra:     0
+
+Checking topology...
+    Boundary definition OK.
+    Cell to face addressing OK.
+    Point usage OK.
+    Upper triangular ordering OK.
+    Face vertices OK.
+    Number of regions: 1 (OK).
+
+Checking patch topology for multiply connected surfaces...
+    Patch               Faces    Points   Surface topology                  
+    bottom              112      226      ok (non-closed singly connected)  
+    back                13056    13289    ok (non-closed singly connected)  
+    front               13056    13289    ok (non-closed singly connected)  
+    inlet               96       194      ok (non-closed singly connected)  
+    outlet              96       194      ok (non-closed singly connected)  
+    top                 136      274      ok (non-closed singly connected)  
+    slipsurface         24       50       ok (non-closed singly connected)  
+
+Checking faceZone topology for multiply connected surfaces...
+    No faceZones found.
+
+Checking basic cellZone addressing...
+    No cellZones found.
+
+Checking geometry...
+    Overall domain bounding box (-0.33333 0 0) (2 1 1)
+    Mesh has 2 geometric (non-empty/wedge) directions (1 1 0)
+    Mesh has 2 solution (non-empty) directions (1 1 0)
+    All edges aligned with or perpendicular to non-empty directions.
+    Boundary openness (-9.796097e-18 0 1.4643634e-15) OK.
+ ***High aspect ratio cells found, Max aspect ratio: 21429.367, number of cells 2755
+  <<Writing 2755 cells with high aspect ratio to set highAspectRatioCells
+    Minimum face area = 8.0389731e-09. Maximum face area = 0.11485094.  Face area magnitudes OK.
+    Min volume = 8.0389731e-09. Max volume = 0.0049338205.  Total volume = 2.33333.  Cell volumes OK.
+    Mesh non-orthogonality Max: 0.00015817871 average: 1.9090959e-06
+    Non-orthogonality check OK.
+    Face pyramids OK.
+    Max skewness = 6.2889827e-10 OK.
+    Coupled point location match (average 0) OK.
+
+Failed 1 mesh checks.
+
+End
+
+--> FOAM [01;31m[KWarning[m[K : 
+    From static Foam::IOstreamOption::compressionType Foam::IOstreamOption::compressionEnum(const Foam::word&, compressionType)
+    in file db/IOstreams/IOstreams/IOstreamOption.C at line 115
+    Unknown compression specifier 'uncompressed', using compression off
+Create mesh for time = 0
+
+
+SIMPLE: convergence criteria
+    field p	 tolerance 1e-06
+    field U	 tolerance 1e-06
+    field "(nuTilda)"	 tolerance 1e-06
+
+Reading field p
+
+Reading field U
+
+Reading/calculating face flux field phi
+
+Selecting incompressible transport model Newtonian
+Selecting turbulence model type RAS
+Selecting RAS turbulence model SpalartAllmaras

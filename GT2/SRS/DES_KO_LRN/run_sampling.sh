@@ -2,8 +2,10 @@
 
 #foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
 
-foamPostProcess -func  sampleDict -noZero
+echo "Resultado do sampling"
 
-foamPostProcess -func  probesDict -noZero
+postProcess -func  sampleDict -noZero | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
+
+postProcess -func  probesDict -noZero | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
 
 

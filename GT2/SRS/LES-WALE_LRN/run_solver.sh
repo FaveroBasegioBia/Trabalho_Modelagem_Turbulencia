@@ -1,17 +1,13 @@
- #!/bin/bash
+#!/bin/bash
+set -e
 
-nprocs=4
-foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs
+nprocs=8
+foamDictionary system/decomposeParDict -entry numberOfSubdomains -set $nprocs > /dev/null 2>&1
 
-#decomposePar
-#mpirun -np $nprocs foamRun -parallel | tee log.solver
+echo "--Comeco simulacao--"
 
-foamRun | tee log.solver
- 
-#foamPostProcess -solver incompressibleFluid -func wallShearStress -noZero -noFunctionObjects
+# Roda o solver transiente de forma 100% silenciosa e joga tudo (saída e erros) para o log.solver
+pimpleFoam > log.solver 2>&1
 
-foamPostProcess -func  sampleDict -noZero
-
-foamPostProcess -func  probesDict -noZero
-
-
+# Extrai os dados das sondas (sampleDict) apenas no último tempo salvo de forma silenciosa
+postProcess -func sampleDict -latestTime > /dev/null 2>&1

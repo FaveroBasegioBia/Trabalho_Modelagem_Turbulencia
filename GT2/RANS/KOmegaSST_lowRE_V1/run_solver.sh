@@ -13,9 +13,9 @@ echo "Comeco simulacao"
 simpleFoam 2>&1 | tee log.solver | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
 
 # Pos-processamento corrigido e padronizado para a versao v2206
-simpleFoam -postProcess -func wallShearStress -latestTime >> log.solver 2>&1
-simpleFoam -postProcess -func yPlus -latestTime >> log.solver 2>&1
-simpleFoam -postProcess -func sampleDict -latestTime >> log.solver 2>&1
+simpleFoam -postProcess -func wallShearStress -latestTime >> log.solver 2>&1 | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
+simpleFoam -postProcess -func yPlus -latestTime >> log.solver 2>&1 | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
+simpleFoam -postProcess -func sampleDict -latestTime >> log.solver 2>&1 | grep -A 20 --color=always -E "ERROR|FATAL|Warning|Exception|Aborted|core dumped"
 
 # Executa o processamento python
 python3 GT2_pos_process.py > /dev/null 2>&1

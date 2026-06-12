@@ -9,9 +9,9 @@ Build  : _da9441b0-20260127 OPENFOAM=2206 patch=260127 version=2206
 Arch   : "LSB;label=32;scalar=64"
 Exec   : checkMesh
 Date   : Jun 12 2026
-Time   : 10:22:32
+Time   : 12:54:37
 Host   : NotebookdoDan
-PID    : 66933
+PID    : 118185
 I/O    : uncollated
 Case   : /home/danilom/Trabalho_Modelagem_Turbulencia/GT2/RANS/KOmegaSST_highRE
 nProcs : 1
